@@ -83,11 +83,15 @@ if not os.path.exists('source/punct_model_full.pcl'):
         filename = wget.download(url3, out='source/punct_model_part3.pcl')
         print("\nDownloaded file: " + filename)
 
+    # Path to model files parts that needs to be combined
     first_file = os.path.abspath('source/punct_model_part1.pcl')
     second_file = os.path.abspath('source/punct_model_part2.pcl')
     third_file = os.path.abspath('source/punct_model_part3.pcl')
+
+    # Path to combined model file
     new_file = os.path.abspath('source/punct_model_full.pcl')
 
+    # Read content of model file parts and write it to the combined model file
     with open(new_file, "wb") as wfd:
         for f in [first_file, second_file, third_file]:
             with open(f, "rb") as fd:
